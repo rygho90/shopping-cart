@@ -75,3 +75,69 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
+/* Custom changes below */
+
+html {
+    font-size: 25px;
+}
+
+body {
+    background-image: url("../images/gymbg.jpg");
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+    background-color: whitesmoke;
+    padding: 0.25rem;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-right-side {
+    display: flex;
+    align-items: center;
+}
+
+.header-title {
+    margin-left: 1rem;
+}
+
+.header-nav {
+    margin-right: 2rem;
+}
+
+.nav-list {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-list li:hover {
+    opacity: 0.7;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 0.25rem;
+}
+
+.cart-button {
+    width: 4rem;
+    height: 75%;
+    align-self: center;
+    justify-self: end;
+    margin-right: 1rem;
+
+    background-image: url("../images/cart.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.cart-button:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+
