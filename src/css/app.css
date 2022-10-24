@@ -1,6 +1,7 @@
 @import "home.css";
 @import "header.css";
 @import "footer.css";
+@import "shop.css";
 
 /* Box sizing rules */
 *,
@@ -67,9 +68,9 @@ select {
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
-   scroll-behavior: auto;
+    scroll-behavior: auto;
   }
-  
+
   *,
   *::before,
   *::after {
@@ -83,16 +84,29 @@ select {
 /* Custom changes below */
 
 html {
-    font-size: 25px;
+  font-size: 25px;
 }
 
 body {
-    background-image: url("../images/gymbg.jpg");
-    font-family: Arial, Helvetica, sans-serif;
+  background-image: url("../images/gymbg.jpg");
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .wrapper {
-    height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-  }
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-div {
+  background-color: whitesmoke;
+  padding: 1.25rem;
+  border-radius: 5px;
+  box-shadow: 3px 3px #181818;
+}
