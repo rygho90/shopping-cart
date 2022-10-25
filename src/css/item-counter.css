@@ -1,0 +1,14 @@
+.counter-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.counter-container button {
+    padding: 0px 10px;
+}
+
+.quantity-display {
+    margin: 0 10px 3px 10px;
+}
