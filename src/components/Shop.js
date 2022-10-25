@@ -8,12 +8,9 @@ export default function Shop() {
   return (
     <main>
       <div className="main-div shop-container">
-
         {items.map((item) => {
-          return <ShopItem key={item.id} {...item} />
+          return <ShopItem key={item.id} {...item} />;
         })}
-
-
       </div>
     </main>
   );

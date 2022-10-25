@@ -10,8 +10,10 @@ export default function ShopItem(props) {
       <img src={image} alt={name} className="item-img" />
       <div className="item-name">{name}</div>
       <div className="item-price">${price}</div>
-      {quantity === 0 && <button onClick={() => incrementQuantity(id)}>Add to Cart</button>}
-      {quantity > 0 && <ItemCounter quantity={quantity} id={id}/>}
+      {quantity === 0 && (
+        <button onClick={() => incrementQuantity(id)}>Add to Cart</button>
+      )}
+      {quantity > 0 && <ItemCounter quantity={quantity} id={id} />}
     </div>
   );
 }

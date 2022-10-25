@@ -5,6 +5,7 @@ import Shop from "./Shop";
 import Contact from "./Contact";
 import Header from "./Header";
 import Footer from "./Footer";
+import Cart from "./Cart";
 import "../css/app.css";
 
 import barbell from "../images/barbell.jpg";
@@ -23,35 +24,30 @@ import tankLight from "../images/tank_light.jpg";
 export const itemContext = React.createContext();
 
 export default function App() {
-  const [items, setItems] = useState(itemList)
-
+  const [items, setItems] = useState(itemList);
 
   const itemContextValue = {
     items,
     incrementQuantity,
-    decrementQuantity
+    decrementQuantity,
   };
 
   function incrementQuantity(id) {
-    const selectedItem = items.find(
-      (item) => item.id === id
-    );
+    const selectedItem = items.find((item) => item.id === id);
     selectedItem.quantity += 1;
 
     const newItems = [...items];
-    const index = newItems.findIndex((i) => i.id === id)
+    const index = newItems.findIndex((i) => i.id === id);
     newItems[index] = selectedItem;
     setItems(newItems);
   }
 
   function decrementQuantity(id) {
-    const selectedItem = items.find(
-      (item) => item.id === id
-    );
+    const selectedItem = items.find((item) => item.id === id);
     selectedItem.quantity -= 1;
 
     const newItems = [...items];
-    const index = newItems.findIndex((i) => i.id === id)
+    const index = newItems.findIndex((i) => i.id === id);
     newItems[index] = selectedItem;
     setItems(newItems);
   }
@@ -59,6 +55,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <itemContext.Provider value={itemContextValue}>
+        <Cart />
         <div className="wrapper">
           <Header />
           <Routes>
