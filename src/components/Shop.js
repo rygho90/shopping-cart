@@ -3,13 +3,13 @@ import ShopItem from "./ShopItem";
 import { itemContext } from "./App";
 
 export default function Shop() {
-  const { itemList } = useContext(itemContext);
+  const { items } = useContext(itemContext);
 
   return (
     <main>
       <div className="main-div shop-container">
 
-        {itemList.map((item) => {
+        {items.map((item) => {
           return <ShopItem key={item.id} {...item} />
         })}
 

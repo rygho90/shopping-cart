@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import Shop from "./Shop";
@@ -23,9 +23,38 @@ import tankLight from "../images/tank_light.jpg";
 export const itemContext = React.createContext();
 
 export default function App() {
+  const [items, setItems] = useState(itemList)
+
+
   const itemContextValue = {
-    itemList,
+    items,
+    incrementQuantity,
+    decrementQuantity
   };
+
+  function incrementQuantity(id) {
+    const selectedItem = items.find(
+      (item) => item.id === id
+    );
+    selectedItem.quantity += 1;
+
+    const newItems = [...items];
+    const index = newItems.findIndex((i) => i.id === id)
+    newItems[index] = selectedItem;
+    setItems(newItems);
+  }
+
+  function decrementQuantity(id) {
+    const selectedItem = items.find(
+      (item) => item.id === id
+    );
+    selectedItem.quantity -= 1;
+
+    const newItems = [...items];
+    const index = newItems.findIndex((i) => i.id === id)
+    newItems[index] = selectedItem;
+    setItems(newItems);
+  }
 
   return (
     <BrowserRouter>
