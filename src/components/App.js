@@ -22,14 +22,20 @@ import tankDark from "../images/tank_dark.jpg";
 import tankLight from "../images/tank_light.jpg";
 
 export const itemContext = React.createContext();
+export const cartContext = React.createContext();
 
 export default function App() {
   const [items, setItems] = useState(itemList);
+  let [showCart, setShowCart] = useState(false);
 
   const itemContextValue = {
     items,
     incrementQuantity,
     decrementQuantity,
+  };
+
+  const cartContextValue = {
+    toggleCart,
   };
 
   function incrementQuantity(id) {
@@ -52,19 +58,29 @@ export default function App() {
     setItems(newItems);
   }
 
+  function toggleCart() {
+    if (showCart) {
+      setShowCart(false);
+    } else {
+      setShowCart(true);
+    }
+  }
+
   return (
     <BrowserRouter>
       <itemContext.Provider value={itemContextValue}>
-        <Cart />
-        <div className="wrapper">
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-          <Footer />
-        </div>
+        <cartContext.Provider value={cartContextValue}>
+          {showCart && <Cart />}
+          <div className="wrapper">
+            <Header />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/shop" element={<Shop />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+            <Footer />
+          </div>
+        </cartContext.Provider>
       </itemContext.Provider>
     </BrowserRouter>
   );

@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { cartContext } from "./App";
 import { Link } from "react-router-dom"
 
 export default function Header() {
+  const { toggleCart } = useContext(cartContext);
   return (
     <header className="header">
         <div className="header-container">
@@ -14,7 +16,7 @@ export default function Header() {
                 <li><Link to="/contact" className='text-link'>Contact</Link></li>
               </ul>
             </nav>
-            <button className="cart-button"></button>
+            <button className="cart-button" onClick={toggleCart}></button>
           </div>
         </div>
       </header>
