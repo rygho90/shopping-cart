@@ -1,11 +1,41 @@
-import React from "react";
+import React, { useContext } from "react";
+import { cartContext, itemContext } from "./App";
+import CartItem from "./CartItem";
 
 export default function Cart() {
+  const { toggleCart } = useContext(cartContext);
+  const { items } = useContext(itemContext);
+
+  let itemTotal = 0;
+  items.forEach((item) => {
+    itemTotal += item.quantity;
+  });
+
   return (
     <div className="overlay ">
       <div className="cart-container">
-        <h3>Cart</h3>
-        <p>There's nothing here.</p>
+        <h2 className="cart-title">Cart</h2>
+
+        <div className="cart-content">
+          {itemTotal === 0 && <p>There's nothing here.</p>}
+          {itemTotal > 0 &&
+            items.map((item) => {
+              if (item.quantity > 0)
+                return <CartItem key={item.id} {...item} />;
+              return null;
+            })}
+          {itemTotal > 0 && (
+            <button
+              className="cart-action cart-action--checkout"
+            >
+              Checkout
+            </button>
+          )}
+        </div>
+
+        <button className="cart-action cart-action--close" onClick={toggleCart}>
+          Close
+        </button>
       </div>
     </div>
   );

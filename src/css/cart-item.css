@@ -1,0 +1,18 @@
+.cart-item-div {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+    font-size: 0.85rem;
+}
+
+.flex-col {
+    flex: 1;
+}
+
+.cart-item-img {
+    width: 125px;
+    height: 125px;
+    object-fit: contain;
+}

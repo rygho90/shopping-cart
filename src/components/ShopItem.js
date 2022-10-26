@@ -11,7 +11,7 @@ export default function ShopItem(props) {
       <div className="item-name">{name}</div>
       <div className="item-price">${price}</div>
       {quantity === 0 && (
-        <button onClick={() => incrementQuantity(id)}>Add to Cart</button>
+        <button className="add-to-cart" onClick={() => incrementQuantity(id)}>Add to Cart</button>
       )}
       {quantity > 0 && <ItemCounter quantity={quantity} id={id} />}
     </div>

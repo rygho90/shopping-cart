@@ -59,11 +59,8 @@ export default function App() {
   }
 
   function toggleCart() {
-    if (showCart) {
-      setShowCart(false);
-    } else {
-      setShowCart(true);
-    }
+    const display = showCart ? false : true;
+    setShowCart(display)
   }
 
   return (
@@ -99,7 +96,7 @@ const itemList = [
     name: "Bench",
     price: 49.99,
     image: bench,
-    quantity: 1,
+    quantity: 0,
   },
   {
     id: 3,

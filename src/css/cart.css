@@ -21,15 +21,38 @@
     text-align: center;
     background-color: whitesmoke;
 
-    animation-name: example;
+    animation-name: slide-in;
     animation-duration: 0.75s;    
+
+    overflow: scroll;
 }
 
-@keyframes example {
+@keyframes slide-in {
     from {right: -500px;}
     to {right: 0px;}
 }
 
-.hidden {
-    display: none;
+.cart-title {
+    margin-top: 2rem;
+}
+
+.cart-content {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cart-action {
+    margin-top: 1rem;
+    width: 80%;
+    text-transform: uppercase;
+}
+
+.cart-action--checkout {
+    background-color: rgb(163, 252, 151);
+}
+
+.cart-action--close {
+    background-color: rgb(226, 105, 105);
 }
