@@ -11,6 +11,11 @@ export default function Cart() {
     itemTotal += item.quantity;
   });
 
+  let totalCost = 0;
+  items.forEach((item) => {
+    totalCost += item.quantity * item.price;
+  });
+
   return (
     <div className="overlay ">
       <div className="cart-container">
@@ -24,10 +29,10 @@ export default function Cart() {
                 return <CartItem key={item.id} {...item} />;
               return null;
             })}
+
+          {itemTotal > 0 && <div>Total: ${totalCost.toFixed(2)}</div>}
           {itemTotal > 0 && (
-            <button
-              className="cart-action cart-action--checkout"
-            >
+            <button className="cart-action cart-action--checkout">
               Checkout
             </button>
           )}
