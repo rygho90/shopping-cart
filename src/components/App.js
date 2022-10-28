@@ -31,10 +31,20 @@ export default function App() {
   let [showCart, setShowCart] = useState(false);
 
   const filteredItems = useMemo(() => {
-    return items.filter(item => {
-      return item.name.toLowerCase().includes(query.toLowerCase())
-    })
-  }, [items, query])
+    let filteredList = [];
+    filteredList = items.filter((item) => {
+      return item.name.toLowerCase().includes(query.toLowerCase());
+    });
+    
+    if (category) {
+      filteredList = filteredList.filter((item) => {
+        return item.category === category;
+      });
+    }
+    
+
+    return filteredList;
+  }, [items, query, category]);
 
   const itemContextValue = {
     items,
@@ -43,7 +53,7 @@ export default function App() {
     decrementQuantity,
     query,
     setQuery,
-    setCategory
+    setCategory,
   };
 
   const cartContextValue = {
@@ -72,10 +82,8 @@ export default function App() {
 
   function toggleCart() {
     const display = showCart ? false : true;
-    setShowCart(display)
+    setShowCart(display);
   }
-
-
 
   return (
     <BrowserRouter>
@@ -104,6 +112,7 @@ const itemList = [
     price: 399.99,
     image: barbell,
     quantity: 0,
+    category: "equipment",
   },
   {
     id: 2,
@@ -111,6 +120,7 @@ const itemList = [
     price: 49.99,
     image: bench,
     quantity: 0,
+    category: "equipment",
   },
   {
     id: 3,
@@ -118,6 +128,7 @@ const itemList = [
     price: 29.99,
     image: creatine,
     quantity: 0,
+    category: "supplements",
   },
   {
     id: 4,
@@ -125,6 +136,7 @@ const itemList = [
     price: 99.99,
     image: dumbbells,
     quantity: 0,
+    category: "equipment",
   },
   {
     id: 5,
@@ -132,6 +144,7 @@ const itemList = [
     price: 20.99,
     image: pants,
     quantity: 0,
+    category: "clothing",
   },
   {
     id: 6,
@@ -139,6 +152,7 @@ const itemList = [
     price: 39.99,
     image: post,
     quantity: 0,
+    category: "supplements",
   },
   {
     id: 7,
@@ -146,6 +160,7 @@ const itemList = [
     price: 32.99,
     image: pre,
     quantity: 0,
+    category: "supplements",
   },
   {
     id: 8,
@@ -153,6 +168,7 @@ const itemList = [
     price: 44.99,
     image: protein,
     quantity: 0,
+    category: "supplements",
   },
   {
     id: 9,
@@ -160,6 +176,7 @@ const itemList = [
     price: 14.99,
     image: shorts,
     quantity: 0,
+    category: "clothing",
   },
   {
     id: 10,
@@ -167,6 +184,7 @@ const itemList = [
     price: 299.99,
     image: squat,
     quantity: 0,
+    category: "equipment",
   },
   {
     id: 11,
@@ -174,6 +192,7 @@ const itemList = [
     price: 10.99,
     image: tankDark,
     quantity: 0,
+    category: "clothing",
   },
   {
     id: 12,
@@ -181,5 +200,6 @@ const itemList = [
     price: 9.99,
     image: tankLight,
     quantity: 0,
+    category: "clothing",
   },
 ];

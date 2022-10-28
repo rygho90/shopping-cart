@@ -3,7 +3,7 @@ import ShopItem from "./ShopItem";
 import { itemContext } from "./App";
 
 export default function Shop() {
-  const { items, filteredItems, query, setQuery } = useContext(itemContext);
+  const { filteredItems, query, setQuery, setCategory } = useContext(itemContext);
 
   return (
     <main>
@@ -19,10 +19,10 @@ export default function Shop() {
       <div className="shop-wrapper">
         <div className="shop-side-bar main-div">
           <ul className="nav-list category-list">
-            <li>All</li>
-            <li>Equipment</li>
-            <li>Supplements</li>
-            <li>Clothing</li>
+            <li onClick={() => setCategory("")}>All</li>
+            <li onClick={() => setCategory("equipment")}>Equipment</li>
+            <li onClick={() => setCategory("supplements")}>Supplements</li>
+            <li onClick={() => setCategory("clothing")}>Clothing</li>
           </ul>
         </div>
         <div className="main-div shop-container">
