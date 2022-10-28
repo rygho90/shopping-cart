@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import Shop from "./Shop";
@@ -26,12 +26,24 @@ export const cartContext = React.createContext();
 
 export default function App() {
   const [items, setItems] = useState(itemList);
+  const [query, setQuery] = useState("");
+  const [category, setCategory] = useState("");
   let [showCart, setShowCart] = useState(false);
+
+  const filteredItems = useMemo(() => {
+    return items.filter(item => {
+      return item.name.toLowerCase().includes(query.toLowerCase())
+    })
+  }, [items, query])
 
   const itemContextValue = {
     items,
+    filteredItems,
     incrementQuantity,
     decrementQuantity,
+    query,
+    setQuery,
+    setCategory
   };
 
   const cartContextValue = {
@@ -62,6 +74,8 @@ export default function App() {
     const display = showCart ? false : true;
     setShowCart(display)
   }
+
+
 
   return (
     <BrowserRouter>
